@@ -33,11 +33,15 @@ router.get('/:id', (req, res) => {
 
 // Servicio para insertar usuarios
 router.post('/', (req, res) => {
+    // Si no hay fecha, se pone la actual
+    const fechaComprobada = req.body.fecha ? req.body.fecha : Date.now();
+    // Si no hay estado, se pone 'pendiente'
+    const estadoComprobado = req.body.estado ? req.body.estado : 'pendiente';
     let nuevoReserva = new Reserva ({   
         usuario: req.body.usuario,
         viaje: req.body.viaje,
-        fecha: req.body.fecha,
-        estado: req.body.estado
+        fecha: fechaComprobada,
+        estado: estadoComprobado
     });
 
     nuevoReserva.save().then (resultado => {
@@ -51,12 +55,16 @@ router.post('/', (req, res) => {
 
 // Servicio para modificar usuarios
 router.put('/:id', (req, res) => {
+    // Si no hay fecha, se pone la actual
+    const fechaComprobada = req.body.fecha ? req.body.fecha : Date.now();
+    // Si no hay estado, se pone 'pendiente'
+    const estadoComprobado = req.body.estado ? req.body.estado : 'pendiente';
     Reserva.findByIdAndUpdate(req.params.id, {
         $set: {
             usuario: req.body.usuario,
             viaje: req.body.viaje,
-            fecha: req.body.fecha,
-            estado: req.body.estado
+            fecha: fechaComprobada,
+            estado: estadoComprobado
         }
     }, {new: true}).then(resultado => {
         if (resultado)
