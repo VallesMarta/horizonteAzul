@@ -1,6 +1,6 @@
 function Footer() {
   return (
-<footer className="bg-secundario p-7 text-fondo grid grid-cols-5 gap-5 absolute bottom-0 w-full">
+<footer className="bg-secundario p-7 text-fondo grid grid-cols-5 gap-5 relative bottom-0 w-full">
   {/* Columna 1: Logo + descripción */}
   <div className="col-span-2 flex gap-3 text-justify">
     <img
@@ -9,7 +9,7 @@ function Footer() {
       className="h-20"
     />
     <p className="text-sm leading-relaxed">
-      Aplicación web para reservas de vuelos, fácil e intuitiva. Consulta viajes, realiza reservas seguras y gestiona vuelos, pasajeros y reservas de manera eficiente.
+      Aplicación web intuitiva para gestionar vuelos y pasajeros. Consulta viajes disponibles, realiza reservas seguras y administra toda la información de manera eficiente.
     </p>
   </div>
 

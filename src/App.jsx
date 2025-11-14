@@ -3,6 +3,8 @@ import './App.css'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './components/Login';
+import Inicio from './components/Inicio';
+import PageNotFound from './components/PageNotFound';
 
 function App() { 
 const [paginaSelecionada, setPaginaSelecionada] = useState('inicio');
@@ -11,15 +13,14 @@ const pintarCuerpo = () => {
   console.log(paginaSelecionada);
   
   switch (paginaSelecionada) {
-      case 'inicio':
-
-      return <Login />;
+    case 'inicio':
+      return <Inicio />;
       
-      case 'login':
-      return "login";
-  
+    case 'login':
+      return <Login />;
+
     default:
-     return "ERROR 404 - PAGE NOT FOUND";
+     return <PageNotFound />
   }
 
 
@@ -29,7 +30,7 @@ const pintarCuerpo = () => {
     <>
       <Header cambiarPagina={setPaginaSelecionada}/>
       <main>
-        <p>{pintarCuerpo()}</p>
+        {pintarCuerpo()}
       </main>
       <Footer />
     </>
