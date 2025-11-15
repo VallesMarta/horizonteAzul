@@ -1,4 +1,3 @@
-import React from 'react';
 
 function NavButton({ enlace, irA, textoAMostrar, color }) {
   return (
