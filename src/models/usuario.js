@@ -8,6 +8,11 @@ let usuarioSchema = new mongoose.Schema({
         minlength: 1,
         trim: true
     },
+    password: {
+        type: String,
+        required: true,
+        minlength: 4,
+    },
     nombre: {
         type: String,
         trim: true

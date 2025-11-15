@@ -1,6 +1,7 @@
 // Librerías externas
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 
 // Enrutadores
 import usuarios from "./routes/usuarios.js";
@@ -11,8 +12,11 @@ import servicios from "./routes/servicios.js";
 // Conexión con la BD
 mongoose.connect('mongodb://127.0.0.1:27017/horizonteAzul');
 
-
+// Creamos instancia de expres
 let app = express();
+
+// Permitir CORS desde cualquier origen (temporal)
+app.use(cors());
 
 // Carga de middleware y enrutadores
 app.use(express.json());
