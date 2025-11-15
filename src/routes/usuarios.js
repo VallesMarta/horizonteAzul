@@ -33,6 +33,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     let nuevoUsuario = new Usuario ({   
         username: req.body.username,
+        password: req.body.password,
         nombre: req.body.nombre,
         email: req.body.email
     });
