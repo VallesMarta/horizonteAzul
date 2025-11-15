@@ -1,5 +1,6 @@
-const express = require('express');
-let Viaje = require(__dirname + '/../models/viaje.js');
+import express from "express";
+import Viaje from "../models/viaje.js";
+
 let router = express.Router();
 
 // Servicio de listado
@@ -84,4 +85,4 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

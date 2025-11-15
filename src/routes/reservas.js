@@ -1,5 +1,6 @@
-const express = require('express');
-let Reserva = require(__dirname + '/../models/reserva.js');
+import express from "express";
+import Reserva from "../models/reserva.js";
+
 let router = express.Router();
 
 // Servicio de listado
@@ -87,4 +88,4 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;
