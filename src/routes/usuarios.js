@@ -1,5 +1,6 @@
-const express = require('express');
-let Usuario = require(__dirname + '/../models/usuario.js');
+import express from "express";
+import Usuario from "../models/usuario.js";
+
 let router = express.Router();
 
 // Servicio de listado
@@ -82,4 +83,4 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 let reservaSchema = new mongoose.Schema({
     usuario: { 
@@ -22,5 +22,6 @@ let reservaSchema = new mongoose.Schema({
         trim: true
     }
 });
-let Reserva = mongoose.model('reservas', reservaSchema)
-module.exports = Reserva;
+let Reserva = mongoose.model('reservas', reservaSchema);
+
+export default Reserva;

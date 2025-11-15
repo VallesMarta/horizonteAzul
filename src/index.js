@@ -1,12 +1,12 @@
 // Librerías externas
-const express = require('express');
-const mongoose = require('mongoose');
+import express from "express";
+import mongoose from "mongoose";
 
 // Enrutadores
-const usuarios = require(__dirname + "/routes/usuarios");
-const viajes = require(__dirname + "/routes/viajes");
-const reservas = require(__dirname + "/routes/reservas");
-const servicios = require(__dirname + "/routes/servicios");
+import usuarios from "./routes/usuarios.js";
+import viajes from "./routes/viajes.js";
+import reservas from "./routes/reservas.js";
+import servicios from "./routes/servicios.js";
 
 // Conexión con la BD
 mongoose.connect('mongodb://127.0.0.1:27017/horizonteAzul');
