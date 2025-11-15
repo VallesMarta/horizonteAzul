@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose  from "mongoose";
 
 let viajeSchema = new mongoose.Schema({
     origen: {
@@ -21,6 +21,6 @@ let viajeSchema = new mongoose.Schema({
         ref: 'servicios'
     }]
 });
-let Viaje = mongoose.model('viajes', viajeSchema)
+let Viaje = mongoose.model('viajes', viajeSchema);
 
-module.exports = Viaje;
+export default Viaje;

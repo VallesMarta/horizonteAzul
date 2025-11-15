@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 let servicioSchema = new mongoose.Schema({
     nombre: {
@@ -10,4 +10,4 @@ let servicioSchema = new mongoose.Schema({
 
 let Servicio = mongoose.model('servicios', servicioSchema)
 
-module.exports = Servicio;
+export default Servicio;
