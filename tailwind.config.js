@@ -13,7 +13,7 @@ export default {
         texto: "var(--color-texto)",
         fondo: "var(--color-fondo)",
         iconos: "var(--color-iconos)",
-        acentoClaro: "var(--color-acento-claro)",
+        acentoclaro: "var(--color-acento-claro)",
         otro: "var(--color-otro)",
       },
       fontFamily: {
