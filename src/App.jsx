@@ -6,14 +6,13 @@ import Login from './components/Login';
 import Inicio from './components/Inicio';
 import PageNotFound from './components/PageNotFound';
 import Registro from './components/Registro';
+import GridGetViajes from './components/GridGetViajes';
 
 function App() { 
 const [paginaSelecionada, setPaginaSelecionada] = useState('inicio');
 const [usuarioLoggeado, setUsuarioLoggeado] = useState(undefined);
 
-const pintarCuerpo = () => {
-  console.log(paginaSelecionada);
-  
+const pintarCuerpo = () => {  
   switch (paginaSelecionada) {
     case 'inicio':
       return <Inicio />;      
@@ -21,6 +20,9 @@ const pintarCuerpo = () => {
       return <Login cambiarPagina={setPaginaSelecionada} setUsuarioLoggeado={setUsuarioLoggeado}/>;
     case 'registro':
       return <Registro />;
+
+    case 'gestionar-viajes':
+      return <GridGetViajes />;
 
     default:
      return <PageNotFound cambiarPagina={setPaginaSelecionada}/>

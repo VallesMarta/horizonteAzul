@@ -33,9 +33,13 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     let nuevoViaje = new Viaje ({   
         origen: req.body.origen,
+        origenAeropuerto: req.body.origenAeropuerto,
         destino: req.body.destino,
+        destinoAeropuerto: req.body.destinoAeropuerto,
         precio: req.body.precio,
-        servicios: req.body.servicios
+        img: req.body.img,
+        servicios: req.body.servicios,
+        descripcion: req.body.descripcion
     });
 
     nuevoViaje.save().then (resultado => {
@@ -52,9 +56,13 @@ router.put('/:id', (req, res) => {
     Viaje.findByIdAndUpdate(req.params.id, {
         $set: {
             origen: req.body.origen,
+            origenAeropuerto: req.body.origenAeropuerto,
             destino: req.body.destino,
+            destinoAeropuerto: req.body.destinoAeropuerto,
             precio: req.body.precio,
-            servicios: req.body.servicios
+            img: req.body.img,
+            servicios: req.body.servicios,
+            descripcion: req.body.descripcion
         }
     }, {new: true}).then(resultado => {
         if (resultado)

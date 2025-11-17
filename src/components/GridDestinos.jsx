@@ -7,13 +7,11 @@ function GridDestinos() {
   const data = async () => {
     try {
       const respuesta = await fetch('http://localhost:8080/viajes');
-      const viajes =  respuesta.json();      
+       viajes =  respuesta.json();      
     } catch (error) {
       console.error("ERROR: no se puede acceder a los viajes" + error);      
     }
   }
-  // (data().ok) ? setViajes(data) : [];
-  // console.log(viajes);
   
   return (
     <div className='w-[75%] flex flex-row flex-wrap justify-center items-center gap-5 p-2 m-5'>

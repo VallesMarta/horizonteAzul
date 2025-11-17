@@ -6,7 +6,17 @@ let viajeSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    origenAeropuerto: {
+        type: String,
+        required: true,
+        trim: true
+    },
     destino: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    destinoAeropuerto: {
         type: String,
         required: true,
         trim: true
@@ -15,11 +25,17 @@ let viajeSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 0
-    },    
+    },  
+    img:{
+        type: String
+    }, 
     servicios: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'servicios'
-    }]
+    }],
+    descripcion: {
+        type: String,
+    }
 });
 let Viaje = mongoose.model('viajes', viajeSchema);
 

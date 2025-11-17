@@ -1,8 +1,22 @@
-function NavEnlace({enlace, irA, textoAMostrar}) {
+import { FaPlaneDeparture } from "react-icons/fa";
+import { GrConfigure } from "react-icons/gr";
+
+function NavEnlace({enlace, irA, textoAMostrar, icono = ""}) {
+  const iconoAMostrar = () => {
+    switch (icono) {
+      case "FaPlaneDeparture":
+        return <FaPlaneDeparture />;
+      case "GrConfigure":
+      return <GrConfigure />;
+      default:
+        break;
+    }
+  }
   return (
-    <li>
+    <li className="flex flex-row items-center gap-2 cursor-pointer hover:text-iconos hover:scale-110 transform transition duration-300">
+       {iconoAMostrar()}
         <a onClick={()=> enlace(irA)}
-            className="font-bold text-lg cursor-pointer hover:text-iconos hover:scale-110 inline-block transform transition duration-300"
+            className="font-bold text-lg"
         >{textoAMostrar}</a>
     </li>
   )
