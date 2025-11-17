@@ -13,8 +13,11 @@ export default {
         texto: "var(--color-texto)",
         fondo: "var(--color-fondo)",
         iconos: "var(--color-iconos)",
-        acentoclaro: "var(--color-acento-claro)",
+        acento: "var(--color-acento)",
         otro: "var(--color-otro)",
+        rojo: "var(--color-rojo)",
+        verde: "var(--color-verde)",
+        naranja: "var(--color-naranja)"
       },
       fontFamily: {
         serif: ["playfair-display", "serif"],
