@@ -110,14 +110,23 @@ function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes }) {
         </div> 
         {/* SERVICIOS */} 
         <div className="flex flex-col gap-2"> 
-            <label className="font-bold text-texto">Servicios disponibles</label> 
-            <select multiple value={servicios} 
-                onChange={(e) => setServicios([...e.target.selectedOptions].map((o) => o.value)) } 
-                className="bg-fondo rounded-md p-2" > 
-                {listaServicios.map((serv) => ( 
-                    <option key={serv._id} value={serv._id}> {serv.nombre} </option> ))
-                } 
-            </select> 
+            <label className="font-bold text-texto">Servicios disponibles</label>                 
+            {listaServicios.map((serv) => (
+              <div key={serv._id} className="flex items-center gap-2 cursor-pointer hover:bg-texto hover:text-fondo hover:font-bold p-1 rounded"
+                onClick={() => {
+                  if (servicios.includes(serv._id)) {
+                    // Si ya está seleccionado, lo quitamos
+                    setServicios(servicios.filter((id) => id !== serv._id));
+                  } else {
+                    // Si no está seleccionado, lo añadimos
+                    setServicios([...servicios, serv._id]);
+                  }
+                }}
+              >
+                <input type="checkbox" checked={servicios.includes(serv._id)} readOnly className="cursor-pointer"/>
+                <span>{serv.nombre}</span>
+              </div>
+            ))}            
         </div> 
         {/* BOTONES */} 
         <div className="flex flex-row gap-4 justify-end items-center"> 
