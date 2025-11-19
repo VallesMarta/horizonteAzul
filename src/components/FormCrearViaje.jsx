@@ -3,7 +3,7 @@ import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { RiMoneyEuroCircleFill } from "react-icons/ri";
 import { AiOutlinePicture } from "react-icons/ai";
 
-function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes }) {
+function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes, urlAPI}) {
   const esEditar = !!viaje;
 
   const [origen, setOrigen] = useState(viaje?.origen || "");
@@ -17,7 +17,7 @@ function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes }) {
   const [listaServicios, setListaServicios] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/servicios")
+    fetch(urlAPI + "/servicios")
       .then(res => res.json())
       .then(data => {
         if (data.ok) setListaServicios(data.resultado);
@@ -38,7 +38,7 @@ function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes }) {
       servicios
     };
 
-    const url = esEditar ? `http://localhost:8080/viajes/${viaje._id}` : "http://localhost:8080/viajes";
+    const url = esEditar ? urlAPI + `/viajes/${viaje._id}` : urlAPI + "/viajes";
     const method = esEditar ? "PUT" : "POST";
 
     fetch(url, {

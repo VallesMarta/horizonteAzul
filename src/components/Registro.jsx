@@ -1,6 +1,6 @@
 import FormRegistro from "./FormRegistro";
 
-function Registro() {
+function Registro({urlAPI}) {
   return (
     <>
         <h1 className='text-secundario m-6 text-center text-4xl font-bold'>Registro</h1>
@@ -13,7 +13,7 @@ function Registro() {
                 />
             </div>
             <div className="flex flex-col justify-center items-center">                     
-                <FormRegistro />
+                <FormRegistro urlAPI={urlAPI}/>
             </div>
         </div>
     </>

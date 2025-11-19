@@ -1,6 +1,6 @@
 import FormLogin from "./FormLogin";
 
-function Login({cambiarPagina, setUsuarioLoggeado}) {
+function Login({cambiarPagina, setUsuarioLoggeado, urlAPI}) {
   return (
     <>
         <h1 className='text-secundario m-6 text-center text-4xl font-bold'>Login</h1>
@@ -18,7 +18,7 @@ function Login({cambiarPagina, setUsuarioLoggeado}) {
                     alt="" 
                     className="rounded-[13px] w-[50%]" 
                 />
-                <FormLogin cambiarPagina={cambiarPagina} setUsuarioLoggeado={setUsuarioLoggeado}/>
+                <FormLogin urlAPI={urlAPI} cambiarPagina={cambiarPagina} setUsuarioLoggeado={setUsuarioLoggeado}/>
             </div>
         </div>
     </>

@@ -1,6 +1,7 @@
 import { FaUser, FaKey } from "react-icons/fa";
 
-function FormLogin({cambiarPagina, setUsuarioLoggeado}) {
+function FormLogin({cambiarPagina, setUsuarioLoggeado, urlAPI}) {
+  console.log(urlAPI);
   
   const comprobarCredenciales = async (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ function FormLogin({cambiarPagina, setUsuarioLoggeado}) {
     }
   }
   const getUsuarios = async () => {
-    let respuesta = await fetch("http://localhost:8080/usuarios");
+    let respuesta = await fetch(urlAPI + "/usuarios");
     if (respuesta.ok) {
       let data = await respuesta.json();
       return data;

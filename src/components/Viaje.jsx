@@ -2,7 +2,7 @@ import CardDescripcion from "./CardDescripcion";
 import { RiEditBoxFill } from "react-icons/ri";
 import { FaTrashAlt } from "react-icons/fa";
 
-function Viaje({ viaje, onEditar, refrescarViajes }) {
+function Viaje({ viaje, onEditar, refrescarViajes, urlAPI }) {
   const { destino, destinoAeropuerto, precio, img="./src/assets/media/img/img-inicio-destino-por-defecto.png", descripcion="Añade una descripción detallada del viaje..." } = viaje;
   
   const eliminarViaje = () => {
@@ -11,7 +11,7 @@ function Viaje({ viaje, onEditar, refrescarViajes }) {
         method: 'DELETE'
       };
 
-      let respuesta = await fetch(`http://localhost:8080/viajes/${viaje._id}`, options);
+      let respuesta = await fetch(urlAPI + `/viajes/${viaje._id}`, options);
       if (respuesta.ok) {
         refrescarViajes();
       }

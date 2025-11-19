@@ -3,7 +3,7 @@ import { GrDocumentConfig } from "react-icons/gr";
 import { FaPlus } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
-function Servicios({setMostrarModalServicios}) {
+function Servicios({setMostrarModalServicios, urlAPI}) {
     const [nombre, setNombre] = useState("");
     const [servicios, setServicios] = useState([]);
 
@@ -15,7 +15,7 @@ function Servicios({setMostrarModalServicios}) {
     const listarServicios = () => {
         const dameServicios = () => {
             const getServicios = async () => {
-                let respuesta = await fetch("http://localhost:8080/servicios");            
+                let respuesta = await fetch(urlAPI + "/servicios");            
                 if (respuesta.ok) {
                     let data = await respuesta.json();
                     setServicios(data.resultado);
@@ -40,7 +40,7 @@ function Servicios({setMostrarModalServicios}) {
             },
         }
         const postServicio = async () => {
-            let respuesta = await fetch("http://localhost:8080/servicios", options);
+            let respuesta = await fetch(urlAPI + "/servicios", options);
             
             if (respuesta.ok) {
                 setNombre("");
@@ -56,7 +56,7 @@ function Servicios({setMostrarModalServicios}) {
             method: 'DELETE'
         }
         const deleteServicio = async () => {
-            let respuesta = await fetch(`http://localhost:8080/servicios/${id}`, options);
+            let respuesta = await fetch(urlAPI + `/servicios/${id}`, options);
             if (respuesta.ok) {
                 // Renderizamos contenido
                 listarServicios();

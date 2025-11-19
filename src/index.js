@@ -1,6 +1,8 @@
 // Librerías externas
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+dotenv.config();
 import cors from "cors";
 
 // Enrutadores
@@ -10,8 +12,7 @@ import reservas from "./routes/reservas.js";
 import servicios from "./routes/servicios.js";
 
 // Conexión con la BD
-mongoose.connect('mongodb://127.0.0.1:27017/horizonteAzul');
-
+mongoose.connect("mongodb://127.0.0.1:27017/horizonteAzul");
 // Creamos instancia de expres
 let app = express();
 
@@ -26,6 +27,7 @@ app.use('/reservas', reservas);
 app.use('/servicios', servicios);
 
 
-
 // Puesta en marcha del servidor
-app.listen(8080);
+app.listen(3000, () => {
+  console.log(`🚀 Servidor escuchando en http://localhost:3000`);
+});

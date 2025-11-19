@@ -1,26 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Destino from './Destino'
 
-function GridDestinos() {
+function GridDestinos({urlAPI}) {
   const [viajes, setViajes] = useState([]);
 
-  const data = async () => {
-    try {
-      const respuesta = await fetch('http://localhost:8080/viajes');
-       viajes =  respuesta.json();      
-    } catch (error) {
-      console.error("ERROR: no se puede acceder a los viajes" + error);      
+  useEffect(() => {
+    // renderiza la variable
+    let cargarViajes = async () => {
+      setViajes(await listarViajes());
+
     }
-  }
-  
+
+    cargarViajes();
+    
+  },[])
+  const listarViajes = async () => {
+    try {
+      const respuesta = await fetch(urlAPI + '/viajes');
+      const data = await respuesta.json();
+
+      if (respuesta.ok) {
+        return data.resultado;
+      }
+    } catch (error) {
+      console.error("ERROR: No hay viajes disponibles");
+      return [];
+    }
+  };
+
   return (
     <div className='w-[75%] flex flex-row flex-wrap justify-center items-center gap-5 p-2 m-5'>
-      <Destino />
-      <Destino />
-      <Destino />
-      <Destino />
-      <Destino />
-      <Destino />
+      {
+        viajes.map((viajeSel)=>{
+          return <Destino key={viajeSel._id} viaje={viajeSel}/>
+        })
+      }      
     </div>
   )
 }

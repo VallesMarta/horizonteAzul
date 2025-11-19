@@ -6,7 +6,7 @@ import FormCrearViaje from "./FormCrearViaje";
 import { ImCross } from "react-icons/im";
 import Servicios from "./Servicios";
 
-function GridGetViajes() {
+function GridGetViajes({urlAPI}) {
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mostrarModalServicios, setMostrarModalServicios] = useState(false);
   const [viajes, setViajes] = useState([]);
@@ -23,7 +23,9 @@ function GridGetViajes() {
 
   const getViajes = async () => {
     try {
-      const respuesta = await fetch("http://localhost:8080/viajes");
+      const respuesta = await fetch(urlAPI + "/viajes");
+      console.log(respuesta);
+      
       if (respuesta.ok) {
         const json = await respuesta.json();
         return json.resultado || [];
@@ -95,6 +97,7 @@ function GridGetViajes() {
               setMostrarModal={setMostrarModal}
               viaje={viajeSeleccionado} // Pasamos el viaje a editar o null si es crear
               refrescarViajes={refrescarViajes} // Para recargar después de guardar
+              urlAPI={urlAPI}
             />
           </div>
         </div>
@@ -109,7 +112,7 @@ function GridGetViajes() {
             >
               <ImCross />
             </button>
-            <Servicios setMostrarModalServicios={setMostrarModalServicios} />
+            <Servicios setMostrarModalServicios={setMostrarModalServicios} urlAPI={urlAPI} />
           </div>
         </div>
       )}

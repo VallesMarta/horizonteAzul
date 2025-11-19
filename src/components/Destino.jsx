@@ -1,6 +1,15 @@
+import { useState } from "react";
 import CardDescripcion from "./CardDescripcion";
-function Destino ({destino = "Irlanda", provincia="Dublin", precio=0.00, img="src/assets/media/img/img-inicio-destino-por-defecto.png", descripcion="Cargando descripcion..."}) {
-  
+// function Destino ({destino = "Irlanda", provincia="Dublin", precio=0.00, img="src/assets/media/img/img-inicio-destino-por-defecto.png", descripcion="Cargando descripcion..."}) {
+function Destino ({ viaje }) {
+  const [origen, setOrigen]  = useState(viaje.origen)
+  const [origenAeropuerto, setOrigenAeropuerto] = useState(viaje.origenAeropuerto)
+  const [destino, setDestino]  = useState(viaje.destino)
+  const [destinoAeropuerto, setdestinoAeropuerto] = useState(viaje.destinoAeropuerto)
+  const [precio, setPrecio] = useState(viaje.precio)
+  const [img, setImg] = useState(viaje.img != "" ? viaje.img : "src/assets/media/img/img-inicio-destino-por-defecto.png");
+  const [descripcion, setDescripcion] = useState(viaje.descripcion != "" ? viaje.descripcion : "UPS. No hay ninguna descripción actualmente")
+
   return (
     <div className="
       w-full max-w-[280px]  /* Ajusta al ancho de la imagen */
@@ -21,7 +30,7 @@ function Destino ({destino = "Irlanda", provincia="Dublin", precio=0.00, img="sr
 
       {/* Subtítulo / provincia */}
       <h5 className="text-center text-sm text-texto uppercase mb-2 font-bold">
-        {provincia}
+        {destinoAeropuerto}
       </h5>
 
       {/* Descripción truncada */}

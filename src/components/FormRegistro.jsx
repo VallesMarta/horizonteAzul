@@ -1,6 +1,6 @@
 import { FaUser, FaKey, FaEnvelope, FaIdBadge } from "react-icons/fa";
 
-function FormRegistro() {
+function FormRegistro({urlAPI}) {
   const guardarUsuario = (e) => {
     e.preventDefault();
     console.log("registrando...");
@@ -36,7 +36,7 @@ function FormRegistro() {
         }
       };
 
-      return await fetch('http://localhost:8080/usuarios', options);
+      return await fetch(urlAPI + '/usuarios', options);
     }
 
   }
