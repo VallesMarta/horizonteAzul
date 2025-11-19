@@ -7,7 +7,7 @@ function Registro({urlAPI}) {
         <div className="flex flex-row justify-center items-center gap-40 mx-60 p-4 rounded-3xl">
             <div>
                 <img 
-                    src="./src/assets/media/img/logo_form_login.jpg" 
+                    src={`${urlAPI}/public/media/img/logo_form_login.jpg`} 
                     alt="" 
                     className="rounded-[13px]" 
                 />

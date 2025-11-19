@@ -41,11 +41,11 @@ const pintarCuerpo = () => {
 
   return (
     <>
-      <Header cambiarPagina={setPaginaSelecionada} usuarioLoggeado={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado}/>
+      <Header cambiarPagina={setPaginaSelecionada} usuarioLoggeado={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado} urlAPI={urlAPI}/>
       <main>
         {pintarCuerpo()}
       </main>
-      <Footer />
+      <Footer urlAPI={urlAPI}/>
     </>
   )
 }

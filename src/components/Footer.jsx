@@ -1,10 +1,10 @@
-function Footer() {
+function Footer({urlAPI}) {
   return (
 <footer className="bg-secundario p-7 text-fondo grid grid-cols-5 gap-5 relative bottom-0 w-full">
   {/* Columna 1: Logo + descripción */}
   <div className="col-span-2 flex gap-3 text-justify">
     <img
-      src="./src/assets/media/img/logo_empresa_header.png"
+      src={`${urlAPI}/public/media/img/logo_empresa_header.png`}
       alt="Logo de Horizonte Azul"
       className="h-20"
     />

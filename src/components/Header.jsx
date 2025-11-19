@@ -3,7 +3,7 @@ import NavButton from "./NavButton";
 import { useEffect } from "react";
 import NavPerfil from "./NavPerfil";
 
-function Header({cambiarPagina, usuarioLoggeado, setUsuarioLoggeado}) {
+function Header({cambiarPagina, usuarioLoggeado, setUsuarioLoggeado, urlAPI}) {
 
   useEffect(() => {
     let existeUsuarioLoggeado = localStorage.getItem("username");
@@ -52,7 +52,7 @@ function Header({cambiarPagina, usuarioLoggeado, setUsuarioLoggeado}) {
   }
   return (
     <header className="p-4 bg-primario text-white flex items-center justify-between">
-      <img onClick={()=> cambiarPagina('inicio')} src="./src/assets/media/img/logo_empresa_header.png" alt="Logo de Horizonte Azul" className="h-20" />      
+      <img onClick={()=> cambiarPagina('inicio')} src={`${urlAPI}/public/media/img/logo_empresa_header.png`} alt="Logo de Horizonte Azul" className="h-20" />      
       <nav className="flex flex-row justify-center items-center">     
         {guestHeader()}
         {userHeader()}        
