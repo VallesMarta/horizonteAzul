@@ -30,8 +30,8 @@ function Header({cambiarPagina, usuarioLoggeado, setUsuarioLoggeado, urlAPI}) {
       return (
         <ul className="flex flex-row flex-wrap gap-5 items-center">
           
-              <NavEnlace enlace={cambiarPagina} irA='reservas' textoAMostrar="Mis Reservas" icono="FaPlaneDeparture" />                     
-              <NavPerfil username={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado} />              
+              <NavEnlace enlace={cambiarPagina} irA='mis-reservas' textoAMostrar="Mis Reservas" icono="FaPlaneDeparture" />                     
+              <NavPerfil enlace={cambiarPagina} username={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado} />              
             </ul>
       )      
     }else {
@@ -43,7 +43,7 @@ function Header({cambiarPagina, usuarioLoggeado, setUsuarioLoggeado, urlAPI}) {
       return (
         <ul className="flex flex-row flex-wrap gap-5 items-center">
           <NavEnlace enlace={cambiarPagina} irA='gestionar-viajes' textoAMostrar="Gestionar viajes" icono="GrConfigure"/>
-          <NavPerfil username={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado} />              
+          <NavPerfil enlace={cambiarPagina} username={usuarioLoggeado} setUsuarioLoggeado={setUsuarioLoggeado} />              
         </ul>
       )      
     }else {

@@ -11,9 +11,21 @@ let reservaSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    fecha: { 
+    nombre: {
+        type: String,
+        required: true
+    },
+    fecCompra: { 
         type: Date, 
         default: Date.now 
+    },
+    fecSalida: { 
+        type: Date,         
+    },
+    pasajeros: {
+        type: Number,
+        default: 1,
+        min: 1
     },
     estado: { 
         type: String, 

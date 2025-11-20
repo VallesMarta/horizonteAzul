@@ -1,9 +1,12 @@
 import { FaUserCircle } from "react-icons/fa";
 
-function NavPerfil ({username, setUsuarioLoggeado}) {
+function NavPerfil ({enlace, username, setUsuarioLoggeado}) {
     const eliminarSesion = () => {
         localStorage.removeItem("username");        
+        localStorage.removeItem("username_id");  
+        localStorage.removeItem("nombreCompleto");  
         setUsuarioLoggeado(undefined);
+        enlace('inicio');
     }
   return (
     <div className="flex flex-row items-center gap-3 bg-secundario/20 p-2 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">

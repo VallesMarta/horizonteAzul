@@ -16,6 +16,13 @@ function FormLogin({cambiarPagina, setUsuarioLoggeado, urlAPI}) {
       // Guardamos en el localstorage el username
       localStorage.setItem("username", usuarioEncontrado.username);
       setUsuarioLoggeado(usuarioEncontrado.username);
+      // Guardamos en el localstorage el id
+      localStorage.setItem("username_id", usuarioEncontrado._id);
+      setUsuarioLoggeado(usuarioEncontrado.username);
+      // Guardamos en el localstorage el nombre
+      localStorage.setItem("nombreCompleto", usuarioEncontrado.nombre);
+      setUsuarioLoggeado(usuarioEncontrado.username);
+
       //Redirigimos al contenido de inicio
       cambiarPagina('inicio');
       

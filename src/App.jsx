@@ -7,13 +7,12 @@ import Inicio from './components/Inicio';
 import PageNotFound from './components/PageNotFound';
 import Registro from './components/Registro';
 import GridGetViajes from './components/GridGetViajes';
+import MisReservas from './components/MisReservas';
 
 function App() { 
 const [paginaSelecionada, setPaginaSelecionada] = useState('inicio');
 const [usuarioLoggeado, setUsuarioLoggeado] = useState(undefined);
 const urlAPI = import.meta.env.VITE_URL_API;
-
-// console.log(import.meta.env); // para depurar todas las variables cargadas
 
 console.log(urlAPI);
 
@@ -28,7 +27,8 @@ const pintarCuerpo = () => {
       return <Login cambiarPagina={setPaginaSelecionada} setUsuarioLoggeado={setUsuarioLoggeado} urlAPI={urlAPI}/>;
     case 'registro':
       return <Registro urlAPI={urlAPI}/>;
-
+    case 'mis-reservas':
+      return <MisReservas urlAPI={urlAPI}/>;
     case 'gestionar-viajes':
       return <GridGetViajes urlAPI={urlAPI}/>;
 

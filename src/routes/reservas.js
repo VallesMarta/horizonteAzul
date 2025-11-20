@@ -3,18 +3,20 @@ import Reserva from "../models/reserva.js";
 
 let router = express.Router();
 
-// Servicio de listado
+// Servicio de listado de reservas
 router.get('/', (req, res) => {
-    Reserva.find().populate("usuario").populate({
+    Reserva.find()
+        .populate("usuario")
+        .populate({
             path: "viaje",
-            populate: { path: "servicios" } // <-- esto es lo que añade los servicios del viaje
-        }).then(resultado => {
-        res.status(200)
-            .send( {ok: true, resultado: resultado});
-    }).catch (error => {
-        res.status(500)
-            .send( {ok: false, error: "Error obteniendo reservas"});
-    });
+            populate: { path: "servicios" } // Incluye servicios del viaje
+        })
+        .then(resultado => {
+            res.status(200).send({ ok: true, resultado });
+        })
+        .catch(error => {
+            res.status(500).send({ ok: false, error: "Error obteniendo reservas" });
+        });
 });
 
 // Servicio de listado por id
@@ -32,20 +34,46 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Obtener reservas de un usuario
+router.get("/mis-reservas/:usuarioId", async (req, res) => {
+const { usuarioId } = req.params;
+
+try {
+    const reservas = await Reserva.find({ usuario: usuarioId })
+    .populate({
+        path: "viaje",
+        populate: { path: "servicios" } // si quieres info de servicios incluidos
+    })
+    .populate("usuario");
+
+    res.status(200).json({ ok: true, resultado: reservas });
+} catch (error) {
+    console.error(error);
+    res.status(500).json({ ok: false, error: "Error obteniendo reservas del usuario" });
+}
+});
+
 // Servicio para insertar usuarios
 router.post('/', (req, res) => {
     // Si no hay fecha, se pone la actual
-    const fechaComprobada = req.body.fecha ? req.body.fecha : Date.now();
+    const fecCompra = req.body.fecCompra || Date.now();    
     // Si no hay estado, se pone 'pendiente'
-    const estadoComprobado = req.body.estado ? req.body.estado : 'pendiente';
-    let nuevoReserva = new Reserva ({   
+    const estado = req.body.estado ? req.body.estado : 'pendiente';
+    // Pasajeros → si no viene, por defecto 1
+    const pasajeros = req.body.pasajeros ? req.body.pasajeros : 1;
+
+    let nuevaReserva = new Reserva({
         usuario: req.body.usuario,
         viaje: req.body.viaje,
-        fecha: fechaComprobada,
-        estado: estadoComprobado
+        nombre: req.body.nombre,
+        pasajeros: pasajeros,
+        fecCompra: fecCompra,
+        fecSalida: req.body.fecSalida,
+        estado: estado
+
     });
 
-    nuevoReserva.save().then (resultado => {
+    nuevaReserva.save().then (resultado => {
         res.status(200)
         .send({ok: true, resultado: resultado});
     }).catch(err => {
@@ -54,7 +82,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// Servicio para modificar usuarios
+// Servicio para modificar reserva
 router.put('/:id', (req, res) => {
     // Si no hay fecha, se pone la actual
     const fechaComprobada = req.body.fecha ? req.body.fecha : Date.now();

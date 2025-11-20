@@ -1,16 +1,32 @@
 import { useState } from "react";
 import CardDescripcion from "./CardDescripcion";
-// function Destino ({destino = "Irlanda", provincia="Dublin", precio=0.00, img="src/assets/media/img/img-inicio-destino-por-defecto.png", descripcion="Cargando descripcion..."}) {
-function Destino ({ viaje }) {
+import { ImCross } from "react-icons/im";
+import FormReservar from "./FormReservar";
+
+function Destino ({ viaje, urlAPI }) {
+  const usuario_id = localStorage.getItem("username_id");
+
+  const comprobarUsuario = () => {
+    if (!usuario_id) {
+      alert("Debes iniciar sesión para reservar");
+      return false;
+    }
+    return true;
+  }
+
   const [origen, setOrigen]  = useState(viaje.origen)
   const [origenAeropuerto, setOrigenAeropuerto] = useState(viaje.origenAeropuerto)
   const [destino, setDestino]  = useState(viaje.destino)
   const [destinoAeropuerto, setdestinoAeropuerto] = useState(viaje.destinoAeropuerto)
   const [precio, setPrecio] = useState(viaje.precio)
-  const [img, setImg] = useState(viaje.img != "" ? viaje.img : "src/assets/media/img/img-inicio-destino-por-defecto.png");
-  const [descripcion, setDescripcion] = useState(viaje.descripcion != "" ? viaje.descripcion : "UPS. No hay ninguna descripción actualmente")
+  const [img, setImg] = useState(viaje.img != "" ? viaje.img : `${urlAPI}/public/media/img/img-inicio-destino-por-defecto.png`);
+  const [descripcion, setDescripcion] = useState(viaje.descripcion != "" ? viaje.descripcion : "UPS. No hay ninguna descripción actualmente");
+
+  // MODAL DE FORMULARIO DE RESERVA
+  const [mostrarModal, setMostrarModal] = useState(false);
 
   return (
+    <>
     <div className="
       w-full max-w-[280px]  /* Ajusta al ancho de la imagen */
       p-3 rounded-xl flex flex-col bg-otro shadow-md
@@ -43,6 +59,7 @@ function Destino ({ viaje }) {
 
       {/* Botón */}
       <button
+        onClick={() => comprobarUsuario() && setMostrarModal(true)}
         type="button"
         className=" cursor-pointer
           mt-4 p-2 rounded-lg bg-secundario text-fondo font-bold text-lg
@@ -56,6 +73,30 @@ function Destino ({ viaje }) {
         Reservar
       </button>
     </div>
+
+    {/* MODAL */}
+      {mostrarModal && (
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+          <div className="bg-otro border-2 border-primario p-6 rounded-xl shadow-2xl w-[90%] max-w-[500px] relative">
+            
+            {/* Botón Cerrar */}
+            <button
+              onClick={() => setMostrarModal(false)}
+              className="absolute top-3 right-3 text-gray-700 text-xl font-bold hover:text-[#D13264]"
+            >
+              <ImCross />
+            </button>
+
+            {/* FORMULARIO */}
+            <FormReservar
+              viaje={viaje}
+              urlAPI={urlAPI}
+              setMostrarModal={setMostrarModal}
+            />
+          </div>
+        </div>
+      )}  
+     </>
   )
 }
 

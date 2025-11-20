@@ -8,12 +8,10 @@ function GridDestinos({urlAPI}) {
     // renderiza la variable
     let cargarViajes = async () => {
       setViajes(await listarViajes());
-
     }
-
-    cargarViajes();
-    
+    cargarViajes();    
   },[])
+
   const listarViajes = async () => {
     try {
       const respuesta = await fetch(urlAPI + '/viajes');
@@ -29,12 +27,10 @@ function GridDestinos({urlAPI}) {
   };
 
   return (
-    <div className='w-[75%] flex flex-row flex-wrap justify-center items-center gap-5 p-2 m-5'>
-      {
-        viajes.map((viajeSel)=>{
-          return <Destino key={viajeSel._id} viaje={viajeSel}/>
-        })
-      }      
+    <div className="w-[75%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-2 m-5 justify-items-center">
+      {viajes.map((viajeSel) => (
+        <Destino key={viajeSel._id} viaje={viajeSel} urlAPI={urlAPI} />
+      ))}
     </div>
   )
 }

@@ -75,6 +75,7 @@ function GridGetViajes({urlAPI}) {
         {viajes.map((v) => (
           <Viaje
             key={v._id}
+            urlAPI={urlAPI}
             viaje={v}
             setMostrarModal={setMostrarModal}
             onEditar={() => handleEditar(v)}
