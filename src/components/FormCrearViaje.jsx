@@ -12,7 +12,7 @@ function FormCrearViaje({ setMostrarModal, viaje = null, refrescarViajes, urlAPI
   const [destinoAeropuerto, setDestinoAeropuerto] = useState(viaje?.destinoAeropuerto || "");
   const [precio, setPrecio] = useState(viaje?.precio || 0);
   const [descripcion, setDescripcion] = useState(viaje?.descripcion || "UPS. No hay ninguna descripción actualmente");
-  const [img, setImg] = useState(viaje?.img || "./src/assets/media/img/img-inicio-destino-por-defecto.png");
+  const [img, setImg] = useState(viaje?.img || `${urlAPI}/public/media/img/img-inicio-destino-por-defecto.png`);
   const [servicios, setServicios] = useState(viaje?.servicios?.map(s => s._id) || []);
   const [listaServicios, setListaServicios] = useState([]);
 
