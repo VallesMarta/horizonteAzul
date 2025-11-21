@@ -66,12 +66,12 @@ Cada vez que se modifique algo en el frontend (React, Tailwind, imágenes, etc.)
 horizonteAzul/
 │
 ├─ src/                # Código fuente backend y frontend
-|  ├─ components/      # Componentes de React
+│  ├─ components/      # Componentes de React
 │  ├─ models/          # Modelos de MongoDB
 │  ├─ routes/          # Rutas de la API
 │  └─ index.js         # Entrada principal de la API
 │
-├─ public/             # Archivos estáticos (frontend y media)
+├─ public/             # Archivos estáticos (img)
 ├─ dist/               # Build generada por React
 ├─ package.json
 └─ README.md
