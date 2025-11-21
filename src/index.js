@@ -25,7 +25,7 @@ app.use('/public', express.static(path.join(__dirname, '../public')));
 
 
 // Conexión con la BD
-mongoose.connect("mongodb://13.62.226.204:27017/horizonteAzul")
+mongoose.connect("mongodb://localhost:27017/horizonteAzul")
 .then(() => console.log(' Conectado a MongoDB'))
   .catch(err => console.error(' Error al conectar MongoDB:', err));
 
