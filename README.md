@@ -65,7 +65,8 @@ Cada vez que se modifique algo en el frontend (React, Tailwind, imágenes, etc.)
 ```bash
 horizonteAzul/
 │
-├─ src/                # Código fuente backend
+├─ src/                # Código fuente backend y frontend
+|  ├─ components/      # Componentes de React
 │  ├─ models/          # Modelos de MongoDB
 │  ├─ routes/          # Rutas de la API
 │  └─ index.js         # Entrada principal de la API
