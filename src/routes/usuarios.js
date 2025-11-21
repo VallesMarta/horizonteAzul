@@ -52,6 +52,7 @@ router.put('/:id', (req, res) => {
     Usuario.findByIdAndUpdate(req.params.id, {
         $set: {
             username: req.body.username,
+            password: req.body.password,
             nombre: req.body.nombre,
             email: req.body.email
         }
