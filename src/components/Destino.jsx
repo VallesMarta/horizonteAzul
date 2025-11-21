@@ -27,35 +27,20 @@ function Destino ({ viaje, urlAPI }) {
 
   return (
     <>
-    <div className="
-      w-full max-w-[280px]  /* Ajusta al ancho de la imagen */
-      p-3 rounded-xl flex flex-col bg-otro shadow-md
-      transition-all duration-300 
-      hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]
-    ">
-      <img
-        className="w-full h-48 object-cover rounded-lg mb-3"
-        src={img}
-        alt={destino}
-      />
+    <div className="w-full max-w-[280px] justify-between p-3 rounded-xl flex flex-col bg-otro shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+      <img className="w-full h-48 object-cover rounded-lg mb-3" src={img} alt={destino} />
 
       {/* Título */}
-      <h3 className="text-secundario font-extrabold text-2xl text-center mb-1">
-        {destino}
-      </h3>
+      <h3 className="text-secundario font-extrabold text-2xl text-center mb-1">{destino}</h3>
 
       {/* Subtítulo / provincia */}
-      <h5 className="text-center text-sm text-texto uppercase mb-2 font-bold">
-        {destinoAeropuerto}
-      </h5>
+      <h5 className="text-center text-sm text-texto uppercase mb-2 font-bold">{destinoAeropuerto}</h5>
 
       {/* Descripción truncada */}
       <CardDescripcion descripcion={descripcion} />
 
       {/* Precio */}
-      <p className="text-secundario font-semibold text-lg text-right mb-4">
-        Precio: {precio}€
-      </p>
+      <p className="text-secundario font-semibold text-lg text-right mb-4">Precio: {precio}€</p>
 
       {/* Botón */}
       <button

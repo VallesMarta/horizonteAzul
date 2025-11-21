@@ -27,7 +27,7 @@ function GridDestinos({urlAPI}) {
   };
 
   return (
-    <div className="w-[75%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-2 m-5 justify-items-center">
+    <div className="mt-6 grid grid-cols-1 grid-cols-5 gap-4 justify-between">
       {viajes.map((viajeSel) => (
         <Destino key={viajeSel._id} viaje={viajeSel} urlAPI={urlAPI} />
       ))}
