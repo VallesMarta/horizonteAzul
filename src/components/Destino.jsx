@@ -27,7 +27,7 @@ function Destino ({ viaje, urlAPI }) {
 
   return (
     <>
-    <div className="w-full max-w-[280px] justify-between p-3 rounded-xl flex flex-col bg-otro shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
+    <div className="w-full max-w-[280px] mb-2 justify-between p-3 rounded-xl flex flex-col bg-otro shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]">
       <img className="w-full h-48 object-cover rounded-lg mb-3" src={img} alt={destino} />
 
       {/* Título */}
