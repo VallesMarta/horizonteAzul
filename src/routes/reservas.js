@@ -89,11 +89,11 @@ router.put('/:id', (req, res) => {
     // Si no hay estado, se pone 'pendiente'
     const estadoComprobado = req.body.estado ? req.body.estado : 'pendiente';
     Reserva.findByIdAndUpdate(req.params.id, {
-        $set: {
-            usuario: req.body.usuario,
-            viaje: req.body.viaje,
-            fecha: fechaComprobada,
-            estado: estadoComprobado
+        $set: {                       
+            nombre: req.body.nombre,
+            pasajeros: pasajeros,
+            fecSalida: req.body.fecSalida,
+            estado: estado
         }
     }, {new: true}).then(resultado => {
         if (resultado)
