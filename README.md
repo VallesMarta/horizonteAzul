@@ -109,7 +109,7 @@ Con JSON:
     
     `git pull origin main`
 
-2. Backend: reiniciar API si hay cambios:
+2. Backend: reiniciar API si hay cambios en src/index.js (como se explicó en la sección Backend):
 
     `pm2 restart api`
 
