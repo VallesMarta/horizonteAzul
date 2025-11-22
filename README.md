@@ -19,7 +19,7 @@ Proyecto web de gestión de viajes y reservas, desarrollado con **React** (front
 
 ### 1. Clonar el repositorio
 
-```bash
+```git
 git clone https://github.com/VallesMarta/horizonteAzul.git
 cd horizonteAzul
 ```
@@ -31,17 +31,15 @@ cd horizonteAzul
 ### 3. Configurar variables de entorno
 Crear un archivo ***.env*** en la raíz:
 ```env
-PORT=3000
-MONGODB_URI=mongodb://127.0.0.1:27017/horizonteAzul
+VITE_URL_API=http://13.50.102.252:3000
 ```
 ---
 
 ## Backend (API)
 1. Levantar la API con PM2 (***LA PRIMERA VEZ***):
-    * `pm2 start src/index.js --name api`
-    ```
+    * `pm2 start src/index.js --name api`    
     PM2 es un gestor de procesos para Node.js que mantiene la API en ejecución continua, reinicia automáticamente si falla y permite monitoreo de logs.
-    ```
+    
 2. Reiniciar la API tras cambios:
     * `pm2 restart api`
     * `pm2 logs api`  -->   Ver logs en tiempo real:
