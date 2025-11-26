@@ -84,10 +84,10 @@ router.post('/', (req, res) => {
 
 // Servicio para modificar reserva
 router.put('/:id', (req, res) => {
-    // Si no hay fecha, se pone la actual
-    const fechaComprobada = req.body.fecha ? req.body.fecha : Date.now();
     // Si no hay estado, se pone 'pendiente'
-    const estadoComprobado = req.body.estado ? req.body.estado : 'pendiente';
+    const estado = req.body.estado ? req.body.estado : 'pendiente';
+    // Pasajeros → si no viene, por defecto 1
+    const pasajeros = req.body.pasajeros ? req.body.pasajeros : 1;
     Reserva.findByIdAndUpdate(req.params.id, {
         $set: {                       
             nombre: req.body.nombre,
